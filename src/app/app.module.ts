@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     AppRoutingModule,
     CoreModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+
     ToastrModule.forRoot({
       timeOut: 4000,
       extendedTimeOut: 4000,

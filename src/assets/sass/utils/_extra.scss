@@ -1,37 +1,7 @@
 /* -----------------------------------
 ** Extra utils
 -------------------------------------*/
-.cursor-pointer{
-  cursor: pointer;
-}
-// .router-wrapper{
-//   padding-top: 30px;
-//   padding-bottom: 30px;
-// }
-.router-wrapper{
-  position: relative;
-  min-height: calc(100vh - 110px);
-}
-.top-repository-wrapper{
-  padding:30px 0;
-}
-.no-data-found{
-  border:1px solid $border;
-  padding:10px;
-}
-.ng-select .ng-arrow-wrapper:before { 
-  right: 3px;
-  top: -5px;
-  content: "\25be";
-  color: gray;
-  font-size: 25px;
-}
-.ng-select .ng-select-container .ng-value-container {
-  padding-top: 2px;
-}
-.user-details-wrapper{
-  padding: 25px 0;
-}
+
 /* -----------------------------------
 ** End Extra utils
 -------------------------------------*/

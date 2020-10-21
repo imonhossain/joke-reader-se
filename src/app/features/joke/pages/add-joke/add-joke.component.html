@@ -1,0 +1,53 @@
+<div class="container">
+  <form class="example-form" [formGroup]="saveForm" autocomplete="off" (submit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categoryList" [value]="category" >{{ category }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of typeList" [value]="type" >{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Flag</mat-label>
+        <mat-checkbox >ddd</mat-checkbox>
+      </mat-form-field>
+    </div> -->
+    <div>
+      
+        <mat-label>Flag</mat-label>
+        <div>
+          <div *ngFor="let flag of flagList; let i = index" formArrayName="flags" class="d-inline-block" >
+            <!-- <mat-checkbox  [formControlName]="i">{{ flag }}</mat-checkbox> -->
+            <label class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="dayIsSelected" [formControlName]="i">
+              <span class="custom-control-label text-nowrap">{{ flag }}</span>
+            </label>
+          </div>
+        </div>
+   
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Content</mat-label>
+        <textarea matInput  formControlName="content"></textarea>
+      </mat-form-field>
+    </div>
+    <div *ngIf="typeControl.value == 'Two Part'">
+      <mat-form-field class="example-full-width">
+        <mat-label>Delivery</mat-label>
+        <textarea matInput  formControlName="delivery"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-button color="accent" type="submit">Save</button>
+  </form>
+</div>

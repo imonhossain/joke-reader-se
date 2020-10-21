@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     {
-      path: '/',
-      
+      path: '',
+      loadChildren: () => import('../app/features/joke/joke.module').then(m => m.JokeModule)
     }
-  ];
+  ]; 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
