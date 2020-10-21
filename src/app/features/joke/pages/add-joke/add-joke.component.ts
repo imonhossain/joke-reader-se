@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { JokeServices } from '../../services/joke.services';
 import { JOKE_CATEGORIES, JOKE_TYPES, JOKE_FLAGS } from '../../../../shared/application.const';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-joke',
@@ -15,16 +16,26 @@ export class AddJokeComponent implements OnInit {
   public flagList = JOKE_FLAGS;
   public saveForm: FormGroup;
   uuid:string;
-
+  public id = null;
   constructor(
     private jokeService: JokeServices,
+    private router: Router,
     private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
     ) { }
 
   ngOnInit(): void {
     this.uuid = uuidv4();
+   
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.id = params["id"];
+    });
+   
+
+
+    
     this.saveForm = this.formBuilder.group({
-      id: [],
+      id: [""],
       category: ["", [Validators.required]],
       type: ["", [Validators.required]],
       flags: this.formBuilder.array(this.flagList.map(x => !1)),
@@ -32,6 +43,12 @@ export class AddJokeComponent implements OnInit {
       delivery: [""],
     
     });
+    if(this.id){
+      console.log("id", this.id);
+      let joke =  this.jokeService.getJoke(this.id);
+      console.log("joke", joke);
+      this.saveForm.patchValue(joke);
+    }
 
     
     
@@ -47,7 +64,14 @@ export class AddJokeComponent implements OnInit {
     if (!this.saveForm.valid) return;
 
     let joke = this.saveForm.value;
-    this.jokeService.addJoke({'uuid':this.uuid, 'joke':joke });
+    if(!joke.id){
+      joke.id = this.uuid
+      this.jokeService.addJoke(joke);
+    }else{
+      this.jokeService.updateJoke(joke);
+    }
+    this.router.navigate(["joke"]);
+    
 
     console.log("joke", joke);
   }

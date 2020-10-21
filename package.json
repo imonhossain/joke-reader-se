@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~10.0.3",
     "@angular/router": "~10.0.3",
     "@ng-select/ng-select": "^5.0.1",
+    "@swimlane/ngx-datatable": "^18.0.0",
+    "ngx-datatable": "^1.0.3",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
