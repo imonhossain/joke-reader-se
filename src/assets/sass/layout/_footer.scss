@@ -1,20 +1,7 @@
 /* -----------------------------------
 ** Footer
 -------------------------------------*/
-.bs-footer-area{
-  padding:0 0;
-  border-top:1px solid $border;
-  
-}
-.footer-content{
-  display: flex;
-  align-items: center;
-  min-height: 46px;
-  @include breakpoint(max_sm){
-   flex-direction: column;
-   justify-content: center;
-  }
-}
+
 /* -----------------------------------
 ** End Footer
 -------------------------------------*/
