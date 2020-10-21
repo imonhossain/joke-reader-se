@@ -25,16 +25,37 @@ export class JokeDetailsComponent implements OnInit {
     }else{
       this.getRandomJoke();
     }
+
+    
   }
 
   getJoke(id){
     return new Joke(this.jokeService.getJoke(id));
   }
+  public intervalID;
+
 
   getRandomJoke(){
     this.joke = new Joke(this.jokeService.randomJoke());
-    console.log("this.joke", this.joke);
+    clearInterval(this.intervalID);
+    this.timerSet();
+   
   }
+
+  timerSet(){
+    
+    if(this.joke.type == 'Single'){
+      console.log("Inner");
+      clearInterval(this.intervalID);
+
+    }else{
+      // let that = this;
+      
+      this.intervalID = setInterval(this.getRandomJoke.bind(this), 3000); 
+     
+    }
+  }
+  
   
 
 }

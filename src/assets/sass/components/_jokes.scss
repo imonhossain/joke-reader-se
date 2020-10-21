@@ -35,3 +35,40 @@
     background: $primary;
   }
 }
+.add-joke-form{
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  .custom-control{
+    margin-right: 20px;
+  }
+  .mat-form-field{
+    display: block;
+  }
+}
+.card{
+  box-shadow: 0 25px 90px -35px rgba(0, 0, 0, 0.5);
+  transition: box-shadow .2s,transform .2s;
+  &__header{
+    background-color: $primary;
+    background-color: #005D6A;
+    padding: 10px 20px;
+    h3{
+      margin-bottom: 0;
+    }
+    *{
+      color: #fff;;
+    }
+  }
+}
+.custom-control-label::before, .custom-control-label::after{
+  width:1.3rem;
+  height: 1.3rem;
+}
+.custom-control-label{
+  line-height: 1.8;
+}
+.btn{
+  min-width: 100px;
+}
