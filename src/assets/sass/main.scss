@@ -1,0 +1,42 @@
+
+
+/* -----------------------------------
+** Utils
+-------------------------------------*/
+@import "utils/variables";
+@import "utils/spacing";
+
+@import "utils/media-screen";
+
+/* -----------------------------------
+** Vendor
+-------------------------------------*/
+@import "vendors/normalize";
+@import "vendors/ng-select";
+@import "vendors/ngx-toast";
+/* -----------------------------------
+** Base
+-------------------------------------*/
+@import "base/base";
+
+
+
+/* -----------------------------------
+** Layout
+-------------------------------------*/
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+
+/* -----------------------------------
+** Components
+-------------------------------------*/
+@import "components/controls";
+@import "components/forms";
+@import "components/table";
+@import "components/buttons";
+@import "components/pagination";
+@import "components/user-details";
+@import "components/preloader";
+@import "utils/extra";
+
