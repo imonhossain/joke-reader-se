@@ -14,6 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule} from '@angular/material/input';
 import { MatSelectModule} from '@angular/material/select';
 import { MatCheckboxModule} from '@angular/material/checkbox';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { JokeDetailsComponent } from './pages/joke-details/joke-details.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,12 +29,14 @@ import { MatCheckboxModule} from '@angular/material/checkbox';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxDatatableModule,
   ],
   declarations: [
     JokeComponent,
     HomeComponent,
     AddJokeComponent,
+    JokeDetailsComponent,
   ],
   providers: [
     SpinnerService,

@@ -1,4 +1,42 @@
-<div class="text-right">
-  <button mat-raised-button color="primary" [routerLink]="['/add-joke']">+ Add Joke</button>
-  <button mat-button color="accent">+ Play Jokes</button>
+<div class="container">
+  <div class="text-right">
+    <button mat-raised-button color="primary" [routerLink]="['./add']">+ Add Joke</button>
+    <button mat-raised-button color="accent" [routerLink]="['./details']"><i class="fa fa-play"></i>Play Jokes</button>
+  </div>
+  
+  <table class=" bs-table">
+    <thead>
+      <tr>
+        <th>
+          Title
+        </th>
+        <th>
+          Flag
+          
+        </th>
+        <th>
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tr  *ngFor="let item of jokeList ; let i = index">
+      <td>
+       <h5 class="d-inline-block"> {{item?.content}}</h5> - {{item?.category}}<br/>
+        {{item?.delivery}}
+      </td>
+      <td>
+        <ng-container *ngFor="let flag of item?.flags; let j = index">
+          <span *ngIf="flag">
+            <img class="avater" style="width:40px;" [src]="'assets/images/'+flagList[j]+'.png'" alt="">
+          </span>
+          
+        </ng-container>
+      </td>
+      <td> 
+        <a [routerLink]="['./edit']" [queryParams]="{id:item.id}"><i class="fa fa-pencil-square"></i></a>  
+        <a [routerLink]="['./details']" [queryParams]="{id:item.id}"><i class="fa fa-play-circle"></i></a>  
+      </td>
+    </tr>
+  </table>
+
 </div>

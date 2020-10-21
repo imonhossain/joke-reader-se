@@ -27,9 +27,8 @@
         <mat-label>Flag</mat-label>
         <div>
           <div *ngFor="let flag of flagList; let i = index" formArrayName="flags" class="d-inline-block" >
-            <!-- <mat-checkbox  [formControlName]="i">{{ flag }}</mat-checkbox> -->
             <label class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" name="dayIsSelected" [formControlName]="i">
+              <input class="custom-control-input" type="checkbox" name="dayIsSelected" [formControlName]="i" [value]="flag">
               <span class="custom-control-label text-nowrap">{{ flag }}</span>
             </label>
           </div>

@@ -5,15 +5,17 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './pages/home/home.component';
 import { AddJokeComponent } from './pages/add-joke/add-joke.component';
+import { JokeDetailsComponent } from './pages/joke-details/joke-details.component';
 
 
 const routes: Routes = [
   {
     path: '', component: JokeComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'add-joke', component: AddJokeComponent },
+      { path: '', component: HomeComponent },
+      { path: 'add', component: AddJokeComponent },
+      { path: 'edit', component: AddJokeComponent },
+      { path: 'details', component: JokeDetailsComponent },
 
     ]
   }

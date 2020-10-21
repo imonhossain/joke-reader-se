@@ -1,0 +1,37 @@
+
+.play-joke-wrapper{
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.play-joke{
+  &__header{
+    background: $primary;
+    color:#fff;
+    padding:10px;
+  }
+  &__title{
+
+  }
+  &__content{
+    font-size: 50px;
+    text-align: center;
+    color: $primary;
+  }
+  &__footer{
+    border-top: 1px solid #ddd;
+    padding:10px;
+  }
+}
+.flag-list{
+  .flag-item{
+    width:40px;
+    margin:2px;
+  }
+}
+.btn-primary{
+  background: $primary;
+  &:hover,&:focus{
+    background: $primary;
+  }
+}
