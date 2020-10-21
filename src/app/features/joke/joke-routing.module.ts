@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'add', component: AddJokeComponent },
       { path: 'edit', component: AddJokeComponent },
-      { path: 'details', component: JokeDetailsComponent },
+      { path: 'play', component: JokeDetailsComponent },
 
     ]
   }
