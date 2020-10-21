@@ -68,7 +68,6 @@ export class JokeServices {
       if (this.checkJokes() !== null) {
         let jokes = JSON.parse(this.checkJokes());
         let random = Math.round(Math.random() * jokes.length + 1);
-        console.log("random", random);
         if(random >= jokes.length){
           random = jokes.length-1;
         }
