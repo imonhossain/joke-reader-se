@@ -1,8 +1,16 @@
 <div class="container list-page-container pt-8">
-  <div class="text-right">
-    <button class="btn btn-primary mr15 mb-3" [routerLink]="['./add']">+ Add Joke</button>
-    <button class="btn btn-info mr-1 mb-3" [routerLink]="['./play']"><i class="fa fa-play"></i> Play Jokes</button>
+  <div class="row">
+    <div class="col-6">
+      <h2>Jokes List</h2>
+    </div>
+    <div class="col-6">
+      <div class="text-right">
+        <button class="btn btn-primary mr15 mb-3" [routerLink]="['./add']">+ Add Joke</button>
+        <button class="btn btn-info mr-1 mb-3" [routerLink]="['./play']"><i class="fa fa-play"></i> Play Jokes</button>
+      </div>
+    </div>
   </div>
+  
   <app-datatable [dataSource]="jokeList" [columns]="displayedColumns" [flagList]="flagList"></app-datatable >
   <ng-template #content let-element='element'>
     <div class="list-main-text">
@@ -24,9 +32,9 @@
   </ng-template>
   <ng-template #actions let-element='element'>
     <div class="table-actions">
-      <a class="circle-button" [routerLink]="['./edit']" [queryParams]="{id:element.id}"><i
+      <a class="circle-button" [routerLink]="[element.id+'/edit']"><i
         class="fa fa-pencil"></i></a>
-      <a class="circle-button" [routerLink]="['./play']" [queryParams]="{id:element.id}"><i
+      <a class="circle-button"  [routerLink]="[element.id+'/play']"><i
         class="fa fa-play"></i></a>
     </div>
   </ng-template>

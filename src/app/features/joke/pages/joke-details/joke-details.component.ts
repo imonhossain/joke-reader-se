@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, filter, take } from 'rxjs/operators';
 import { JOKE_FLAGS } from 'src/app/shared/application.const';
 import { Joke } from '../../models/joke.model';
 import { JokeServices } from '../../services/joke.services';
@@ -13,52 +13,65 @@ import {MatPaginator} from '@angular/material/paginator';
   styleUrls: ['./joke-details.component.css']
 })
 export class JokeDetailsComponent implements OnInit, OnDestroy  {
-  public id= null;
+  public id = "";
   public flagList = JOKE_FLAGS;
   public intervalID;
   public joke = new Joke();
   private subscribtionList:Subscription[] = [];
+  private subscribtionListRouter:Subscription[] = [];
 
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,  
-    private jokeService: JokeServices
+    private jokeService: JokeServices,
+    private router: Router,
     ) { }
  
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.id = params["id"];
-    });
-    if(this.id){
-       this.joke = this.getJoke(this.id);
-    }else{
-      this.getRandomJoke();
-    }
+    this.subscribtionListRouter.push(this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = params['params']['id'] || "";
+      this.getJoke(this.id);
+    }));
   }
  
 
-  getJoke(id){
-    return new Joke(this.jokeService.getJoke(id));
-  }
+  getJoke(id?){
+    if(id){
+      this.joke = new Joke(this.jokeService.getJoke(id));
+    }else{
+      this.joke = new Joke(this.jokeService.randomJoke());
+    }
   
-  getRandomJoke(){
-    this.joke = new Joke(this.jokeService.randomJoke());
-    this.listUnscribe()
+    
     this.timerSet();
   }
+  
+  
   timerSet(){
+    let randomId = new Joke(this.jokeService.randomJoke()).id;
+     this.listUnscribe();
+    if(this.joke.id == randomId){
+      this.timerSet();
+    }
+
     if(this.joke.type == 'Single'){
      
     }else{
       const numbers = timer(3000);
-      this.subscribtionList.push(numbers.subscribe(any =>  this.getRandomJoke()));
+      this.subscribtionList.push(numbers.subscribe(any => {
+       return this.router.navigate(["joke/"+ randomId +"/play"])
+      }
+         
+      ));
     }
   }
   ngOnDestroy(): void {
-    this.listUnscribe()
+    this.listUnscribe();
+    this.subscribtionListRouter.forEach(subs=>subs.unsubscribe());
   }
 
   listUnscribe(){
     this.subscribtionList.forEach(subs=>subs.unsubscribe());
+   
   }
 }
