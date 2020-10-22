@@ -14,8 +14,9 @@ const routes: Routes = [
     children: [
       { path: '', component: JokeListComponent, data: { state: 'list' } },
       { path: 'add', component: AddJokeComponent, data: { state: 'add' } },
-      { path: 'edit', component: AddJokeComponent, data: { state: 'edit' } },
-      { path: 'play', component: JokeDetailsComponent ,data: { state: 'play' } },
+      { path: ':id/edit', component: AddJokeComponent, data: { state: 'edit' } },
+      { path: ':id/play', component: JokeDetailsComponent, data: { state: 'play' } },
+      { path: 'play', component: JokeDetailsComponent, data: { state: 'play' } },
 
     ]
   }

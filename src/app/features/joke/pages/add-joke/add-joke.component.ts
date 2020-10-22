@@ -25,11 +25,9 @@ export class AddJokeComponent implements OnInit {
 
   ngOnInit(): void {
     this.uuid = uuidv4();
-   
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.id = params["id"];
-    });
-  
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = params['params']['id'] || "";
+    })
     this.saveForm = this.formBuilder.group({
       id: [""],
       category: ["", [Validators.required]],

@@ -27,8 +27,11 @@
 }
 .flag-list{
   .flag-item{
-    width:40px;
-    margin:2px;
+    width: 40px;
+    margin: 2px;
+    border: 1px solid #ddd;
+    height: 40px;
+    object-fit: cover;
   }
 }
 .btn-primary{
@@ -49,9 +52,12 @@
     display: block;
   }
 }
+body{
+  background:#f4f5f7;
+}
 .card{
-  box-shadow: 0 25px 90px -35px rgba(0, 0, 0, 0.5);
-  transition: box-shadow .2s,transform .2s;
+  
+  border-radius: 5px;
   &__header{
     background-color: $primary;
     background-color: #005D6A;
@@ -70,6 +76,7 @@
 }
 .custom-control-label{
   line-height: 1.8;
+  padding-left: 3px;
 }
 .btn{
   min-width: 100px;
@@ -116,9 +123,20 @@ table.mat-table{
     color:#fff;
   }
 }
-.list-page-container{
-  max-width: 800px;;
+.list-page-container,.sc-header{
+  max-width: 800px;
+  margin-left:auto;
+  margin-right: auto;
 }
 .mr15{
   margin-right: 15px;
+}
+.mat-paginator{
+  background: $primary;
+  *{
+    color:#fff;
+  }
+  .mat-icon-button.mat-button-disabled.mat-button-disabled {
+    opacity: .4;
+  }
 }

@@ -2,7 +2,12 @@
   <form class="add-joke-form" [formGroup]="saveForm" autocomplete="off" (submit)="onSubmit()">
     <div class="card">
       <div class="card__header">
-        <h3>Add Joke</h3>
+        <h3 *ngIf="!id">
+          Add Joke
+        </h3>
+        <h3 *ngIf="id">
+          Edit Joke
+        </h3>
       </div>
       <div class="card-body">
         <div>
@@ -52,8 +57,10 @@
             <textarea matInput  formControlName="delivery"></textarea>
           </mat-form-field>
         </div>
-        <button class="btn btn-primary mr15" type="submit">Save</button>
-        <a class="btn btn-info mr-1"  [routerLink]="['/']">Joke List</a>
+        <div class="text-right">
+          <button class="btn btn-primary mr15" type="submit">Save</button>
+          <a class="btn btn-info mr-1"  [routerLink]="['/']">Joke List</a>
+        </div>
       </div><!--/.card-body-->
     </div>
     
