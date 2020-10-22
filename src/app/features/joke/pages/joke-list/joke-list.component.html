@@ -11,12 +11,16 @@
     </div>
   </ng-template>
   <ng-template #flags let-element='element'>
-    <!-- Name Column -->
-    <ng-container *ngFor="let flag of element?.flags; let j = index">
+    <div class="flag-list">
+      <ng-container *ngFor="let flag of element?.flags; let j = index">
+        <img  class="flag-item" *ngIf="flag"  [src]="'assets/images/'+flagList[j]+'.png'" alt="">
+      </ng-container>
+    </div>
+    <!-- <ng-container *ngFor="let flag of element?.flags; let j = index">
       <span *ngIf="flag">
         <img class="avater" style="width:40px;" [src]="'assets/images/'+flagList[j]+'.png'" alt="">
       </span>
-    </ng-container>
+    </ng-container> -->
   </ng-template>
   <ng-template #actions let-element='element'>
     <div class="table-actions">

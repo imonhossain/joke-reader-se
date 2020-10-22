@@ -27,8 +27,11 @@
 }
 .flag-list{
   .flag-item{
-    width:40px;
-    margin:2px;
+    width: 40px;
+    margin: 2px;
+    border: 1px solid #ddd;
+    height: 40px;
+    object-fit: cover;
   }
 }
 .btn-primary{
@@ -121,4 +124,13 @@ table.mat-table{
 }
 .mr15{
   margin-right: 15px;
+}
+.mat-paginator{
+  background: $primary;
+  *{
+    color:#fff;
+  }
+  .mat-icon-button.mat-button-disabled.mat-button-disabled {
+    opacity: .4;
+  }
 }
