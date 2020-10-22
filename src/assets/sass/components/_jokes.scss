@@ -74,3 +74,48 @@
 .btn{
   min-width: 100px;
 }
+
+.outer-wrappe{
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pt-8{
+  padding-top:40px;
+}
+table.mat-table{
+  width:100%;
+  padding-top: 20px;;
+}
+.table-actions{
+  .circle-button{
+    border: 1px solid #005D6A;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    color: #005D6A;
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    margin: 2px;
+    padding-left: 3px;
+    &:hover{
+      background:$primary;
+      color:#fff;
+    }
+  }
+}
+.list-main-text{
+  padding-top: 7px;
+  padding-bottom: 3px;
+}
+.mat-table thead{
+  background:$primary;
+  *{
+    color:#fff;
+  }
+}
+.list-page-container{
+  max-width: 800px;;
+}

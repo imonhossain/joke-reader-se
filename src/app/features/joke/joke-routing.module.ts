@@ -12,10 +12,10 @@ const routes: Routes = [
   {
     path: '', component: JokeComponent,
     children: [
-      { path: '', component: JokeListComponent },
-      { path: 'add', component: AddJokeComponent },
-      { path: 'edit', component: AddJokeComponent },
-      { path: 'play', component: JokeDetailsComponent },
+      { path: '', component: JokeListComponent, data: { state: 'list' } },
+      { path: 'add', component: AddJokeComponent, data: { state: 'add' } },
+      { path: 'edit', component: AddJokeComponent, data: { state: 'edit' } },
+      { path: 'play', component: JokeDetailsComponent ,data: { state: 'play' } },
 
     ]
   }

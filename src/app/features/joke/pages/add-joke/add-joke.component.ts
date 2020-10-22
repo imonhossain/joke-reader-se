@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './add-joke.component.html',
 })
 export class AddJokeComponent implements OnInit {
-
   public categoryList = JOKE_CATEGORIES;
   public typeList = JOKE_TYPES;
   public flagList = JOKE_FLAGS;
@@ -30,10 +29,7 @@ export class AddJokeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params["id"];
     });
-   
-
-
-    
+  
     this.saveForm = this.formBuilder.group({
       id: [""],
       category: ["", [Validators.required]],
@@ -41,18 +37,16 @@ export class AddJokeComponent implements OnInit {
       flags: this.formBuilder.array(this.flagList.map(x => !1)),
       content: ["", [Validators.required]],
       delivery: [""],
-    
     });
+
     if(this.id){
       console.log("id", this.id);
       let joke =  this.jokeService.getJoke(this.id);
       console.log("joke", joke);
       this.saveForm.patchValue(joke);
     }
-
-    
-    
   }
+
   createFlag(name): FormGroup {
     return this.formBuilder.group({
       name
@@ -70,14 +64,14 @@ export class AddJokeComponent implements OnInit {
     }else{
       this.jokeService.updateJoke(joke);
     }
-    this.router.navigate(["joke"]);
-    
 
-    console.log("joke", joke);
+    this.router.navigate(["joke"]);
   }
+
   get flagsControl(): FormArray {
     return <FormArray>this.saveForm.get('flags');
   }
+
   get typeControl(): FormArray {
     return <FormArray>this.saveForm.get('type');
   }
