@@ -1,40 +1,30 @@
 <div class="container list-page-container pt-8">
   <div class="text-right">
-    <button class="btn btn-primary mr-1 mb-3" [routerLink]="['./add']">+ Add Joke</button>
+    <button class="btn btn-primary mr15 mb-3" [routerLink]="['./add']">+ Add Joke</button>
     <button class="btn btn-info mr-1 mb-3" [routerLink]="['./play']"><i class="fa fa-play"></i> Play Jokes</button>
   </div>
-  <table mat-table [dataSource]="jokeList" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef> Content </th>
-      <td mat-cell *matCellDef="let element">
-       <div class="list-main-text">
-        <h5 class="d-inline-block"> {{element?.content}}</h5> - {{element?.category}}<br/>
-        {{element?.delivery}}
-       </div>
-      </td>
-    </ng-container>
-  
+  <app-datatable [dataSource]="jokeList" [columns]="displayedColumns" [flagList]="flagList"></app-datatable >
+  <ng-template #content let-element='element'>
+    <div class="list-main-text">
+      <h5 class="d-inline-block"> {{element?.content}}</h5> - {{element?.category}}<br />
+      {{element?.delivery}}
+    </div>
+  </ng-template>
+  <ng-template #flags let-element='element'>
     <!-- Name Column -->
-    <ng-container matColumnDef="flags">
-      <th mat-header-cell *matHeaderCellDef> Flags </th>
-      <td mat-cell *matCellDef="let element"> 
-        <ng-container *ngFor="let flag of element?.flags; let j = index">
-          <span *ngIf="flag">
-            <img class="avater" style="width:40px;" [src]="'assets/images/'+flagList[j]+'.png'" alt="">
-          </span>
-          
-        </ng-container>
-      </td>
+    <ng-container *ngFor="let flag of element?.flags; let j = index">
+      <span *ngIf="flag">
+        <img class="avater" style="width:40px;" [src]="'assets/images/'+flagList[j]+'.png'" alt="">
+      </span>
     </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions </th>
-      <td mat-cell *matCellDef="let element" class="table-actions"> 
-        <a class="circle-button" [routerLink]="['./edit']" [queryParams]="{id:element.id}"><i class="fa fa-pencil"></i></a>  
-        <a class="circle-button" [routerLink]="['./play']" [queryParams]="{id:element.id}"><i class="fa fa-play"></i></a>  
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  </ng-template>
+  <ng-template #actions let-element='element'>
+    <div class="table-actions">
+      <a class="circle-button" [routerLink]="['./edit']" [queryParams]="{id:element.id}"><i
+        class="fa fa-pencil"></i></a>
+      <a class="circle-button" [routerLink]="['./play']" [queryParams]="{id:element.id}"><i
+        class="fa fa-play"></i></a>
+    </div>
+  </ng-template>
+
 </div>
