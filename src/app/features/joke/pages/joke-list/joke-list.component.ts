@@ -3,13 +3,13 @@ import { JokeServices } from '../../services/joke.services'
 import { Joke } from '../../models/joke.model'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { JOKE_FLAGS } from 'src/app/shared/application.const';
+import { JOKE_FLAGS } from '../../../../shared/application.const';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-joke-list',
+  templateUrl: './joke-list.component.html',
+  styleUrls: ['./joke-list.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class JokeListComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup;
   // public jokeList = new Array<Joke>();
   public jokeList = [];

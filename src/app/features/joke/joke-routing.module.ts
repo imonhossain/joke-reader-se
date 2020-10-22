@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { JokeComponent } from './joke.component';
 import { NgModule } from '@angular/core';
 
-import { HomeComponent } from './pages/home/home.component';
+import { JokeListComponent } from './pages/joke-list/joke-list.component';
 import { AddJokeComponent } from './pages/add-joke/add-joke.component';
 import { JokeDetailsComponent } from './pages/joke-details/joke-details.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '', component: JokeComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: '', component: JokeListComponent },
       { path: 'add', component: AddJokeComponent },
       { path: 'edit', component: AddJokeComponent },
       { path: 'play', component: JokeDetailsComponent },

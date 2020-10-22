@@ -6,7 +6,7 @@ import { LayoutModule } from '../../layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerService } from '../../providers/services/spinner.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './pages/home/home.component';
+import { JokeListComponent } from './pages/joke-list/joke-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddJokeComponent } from './pages/add-joke/add-joke.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +36,7 @@ import { MatCardModule } from '@angular/material/card';
   ],
   declarations: [
     JokeComponent,
-    HomeComponent,
+    JokeListComponent,
     AddJokeComponent,
     JokeDetailsComponent,
   ],
