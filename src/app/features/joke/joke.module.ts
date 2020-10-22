@@ -17,6 +17,7 @@ import { MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { JokeDetailsComponent } from './pages/joke-details/joke-details.component';
 import { MatCardModule } from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +33,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatCheckboxModule,
     NgxDatatableModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   declarations: [
     JokeComponent,

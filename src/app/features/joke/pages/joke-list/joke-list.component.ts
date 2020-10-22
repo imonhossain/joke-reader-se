@@ -13,14 +13,8 @@ export class JokeListComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup;
   // public jokeList = new Array<Joke>();
   public jokeList = [];
-  private subscribtionList:Subscription[] = [];
   public flagList = JOKE_FLAGS;
- public  rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' }
-  ];
-  public columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company', cellClicked:this.onClickCompany() }];
+  displayedColumns: string[] = ['category', 'flags', 'actions'];
 
 
 
