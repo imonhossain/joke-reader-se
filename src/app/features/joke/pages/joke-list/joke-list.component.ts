@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { JokeServices } from '../../services/joke.services'
 import { Joke } from '../../models/joke.model'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { JOKE_FLAGS } from '../../../../shared/application.const';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-joke-list',
   templateUrl: './joke-list.component.html',
@@ -12,10 +14,12 @@ import { JOKE_FLAGS } from '../../../../shared/application.const';
 export class JokeListComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup;
   // public jokeList = new Array<Joke>();
-  public jokeList = [];
+  public jokeList :MatTableDataSource<Joke>;
   public flagList = JOKE_FLAGS;
   displayedColumns: string[] = ['category', 'flags', 'actions'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  
 
 
   constructor(
@@ -25,9 +29,12 @@ export class JokeListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.jokeList =  this.jokeServices.getJokes();
+    this.jokeList =  new MatTableDataSource<Joke>(this.jokeServices.getJokes()); ;
     console.log("jokeList", this.jokeList);
     console.log("flagList", this.flagList);
+  }
+  ngAfterViewInit() {
+    this.jokeList.paginator = this.paginator;
   }
 
   onClickCompany(){

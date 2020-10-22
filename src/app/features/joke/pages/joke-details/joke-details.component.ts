@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 import { JOKE_FLAGS } from 'src/app/shared/application.const';
@@ -6,6 +6,7 @@ import { Joke } from '../../models/joke.model';
 import { JokeServices } from '../../services/joke.services';
 import { timer, Observable, Subject, Subscription } from 'rxjs';
 import { switchMap, takeUntil, catchError } from 'rxjs/operators';
+import {MatPaginator} from '@angular/material/paginator';
 @Component({
   selector: 'app-joke-details',
   templateUrl: './joke-details.component.html',
@@ -17,6 +18,8 @@ export class JokeDetailsComponent implements OnInit, OnDestroy  {
   public intervalID;
   public joke = new Joke();
   private subscribtionList:Subscription[] = [];
+
+  
   constructor(
     private activatedRoute: ActivatedRoute,  
     private jokeService: JokeServices
@@ -33,6 +36,7 @@ export class JokeDetailsComponent implements OnInit, OnDestroy  {
       this.getRandomJoke();
     }
   }
+ 
 
   getJoke(id){
     return new Joke(this.jokeService.getJoke(id));
