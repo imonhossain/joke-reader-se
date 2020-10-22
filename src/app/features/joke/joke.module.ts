@@ -14,11 +14,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule} from '@angular/material/input';
 import { MatSelectModule} from '@angular/material/select';
 import { MatCheckboxModule} from '@angular/material/checkbox';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { JokeDetailsComponent } from './pages/joke-details/joke-details.component';
 import { MatCardModule } from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { AppGenericDatatableModule } from '../app-generic-datatable/app-generic-datatable.module';
+import { MatTableModule } from '@angular/material/table';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -33,11 +33,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    NgxDatatableModule,
     MatCardModule,
+    AppGenericDatatableModule,
     MatTableModule,
-    MatPaginatorModule
-
   ],
   declarations: [
     JokeComponent,

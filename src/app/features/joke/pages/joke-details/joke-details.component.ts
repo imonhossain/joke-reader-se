@@ -30,7 +30,6 @@ export class JokeDetailsComponent implements OnInit, OnDestroy  {
       this.id = params["id"];
     });
     if(this.id){
-      console.log("id", this.id);
        this.joke = this.getJoke(this.id);
     }else{
       this.getRandomJoke();

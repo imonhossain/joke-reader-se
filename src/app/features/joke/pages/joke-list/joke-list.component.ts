@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { JokeServices } from '../../services/joke.services'
 import { Joke } from '../../models/joke.model'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -14,35 +14,38 @@ import { MatTableDataSource } from '@angular/material/table';
 export class JokeListComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup;
   // public jokeList = new Array<Joke>();
-  public jokeList :MatTableDataSource<Joke>;
+  public jokeList: MatTableDataSource<Joke>;
   public flagList = JOKE_FLAGS;
-  displayedColumns: string[] = ['category', 'flags', 'actions'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  
+  @ViewChild('content') content: TemplateRef<any>;
+  @ViewChild('flags') flags: TemplateRef<any>;
+  @ViewChild('actions') actions: TemplateRef<any>;
+  // displayedColumns: string[] = ['category', 'flags', 'actions'];
+  public displayedColumns;
+
+
 
 
   constructor(
     private jokeServices: JokeServices,
     private fb: FormBuilder,
-  
+
   ) { }
 
   ngOnInit(): void {
-    this.jokeList =  new MatTableDataSource<Joke>(this.jokeServices.getJokes()); ;
-    console.log("jokeList", this.jokeList);
-    console.log("flagList", this.flagList);
-  }
-  ngAfterViewInit() {
-    this.jokeList.paginator = this.paginator;
+    this.jokeList = new MatTableDataSource<Joke>(this.jokeServices.getJokes());
   }
 
-  onClickCompany(){
-    console.log("data");
+  ngAfterViewInit() {
+    this.displayedColumns = [
+      { column: 'category', title: 'Category', cellTemplate: this.content },
+      { column: 'flags', title: 'Flags', cellTemplate: this.flags },
+      { column: 'actions', title: 'Actions', cellTemplate: this.actions }
+    ]
   }
- 
+
 
   ngOnDestroy(): void {
-    //this.subscribtionList.forEach(subs=>subs.unsubscribe());
+    
   }
 }

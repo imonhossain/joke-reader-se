@@ -40,9 +40,7 @@ export class AddJokeComponent implements OnInit {
     });
 
     if(this.id){
-      console.log("id", this.id);
       let joke =  this.jokeService.getJoke(this.id);
-      console.log("joke", joke);
       this.saveForm.patchValue(joke);
     }
   }
@@ -54,7 +52,6 @@ export class AddJokeComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("submit");
     if (!this.saveForm.valid) return;
 
     let joke = this.saveForm.value;
