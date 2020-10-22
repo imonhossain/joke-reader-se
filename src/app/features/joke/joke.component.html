@@ -1,8 +1,8 @@
 <div class="outer-wrapper">
   <app-header></app-header>
   <div class="router-wrapper">
-    <div class="sc-container">
-      <router-outlet></router-outlet>
+    <div class="sc-container" [@routeAnimation]="getDepth(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </div>
   <app-footer></app-footer>
